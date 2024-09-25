@@ -1,18 +1,12 @@
 package com.guilherme.devsuperiorAtividade.entities;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
 import java.util.Objects;
-import java.util.Set;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
@@ -27,17 +21,17 @@ public class Atividade {
 	private String descricao;
 	private Double preco;
 
-	@ManyToMany
-	@JoinTable(name = "tb_atividade_bloco", joinColumns = @JoinColumn(name = "atividade_id"), inverseJoinColumns = @JoinColumn(name = "bloco_id"))
-	private List<Bloco> bloco = new ArrayList<>();
+	@ManyToOne
+	@JoinColumn(name = "bloco_id")
+	private Bloco bloco;
 
 	@ManyToOne
 	@JoinColumn(name = "categoria_id")
 	private Categoria categoria;
 
-	@ManyToMany
-	@JoinTable(name = "tb_atividade_categoria", joinColumns = @JoinColumn(name = "atividade_id"), inverseJoinColumns = @JoinColumn(name = "participante_id"))
-	private Set<Participante> participante = new HashSet<>();
+	@ManyToOne
+	@JoinColumn(name = "participante_id")
+	private Participante participante;
 
 	public Atividade() {
 	}
@@ -81,8 +75,20 @@ public class Atividade {
 		this.preco = preco;
 	}
 
-	public List<Bloco> getBloco() {
+	public Bloco getBloco() {
 		return bloco;
+	}
+
+	public void setBloco(Bloco bloco) {
+		this.bloco = bloco;
+	}
+
+	public Participante getParticipante() {
+		return participante;
+	}
+
+	public void setParticipante(Participante participante) {
+		this.participante = participante;
 	}
 
 	public Categoria getCategoria() {
@@ -91,10 +97,6 @@ public class Atividade {
 
 	public void setCategoria(Categoria categoria) {
 		this.categoria = categoria;
-	}
-
-	public Set<Participante> getParticipante() {
-		return participante;
 	}
 
 	@Override

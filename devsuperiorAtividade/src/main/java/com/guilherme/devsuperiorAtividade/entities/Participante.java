@@ -8,7 +8,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -20,7 +20,7 @@ public class Participante {
 	private Integer id;
 	private String nome;
 	private String email;
-	@ManyToMany(mappedBy = "participante")
+	@OneToMany(mappedBy = "participante")
 	private Set<Atividade> atividade = new HashSet<>();
 
 	public Participante() {
