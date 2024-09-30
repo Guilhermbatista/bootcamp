@@ -1,16 +1,16 @@
 package com.guilherme.devsuperiorAtividade.entities;
 
 import java.time.Instant;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -25,8 +25,8 @@ public class Bloco {
 	@Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
 	private Instant fim;
 
-	@OneToMany(mappedBy = "bloco")
-	private List<Atividade> atividade = new ArrayList<>();
+	@ManyToMany(mappedBy = "bloco")
+	private Set<Atividade> atividade = new HashSet<>();
 
 	public Bloco() {
 	}
@@ -61,7 +61,11 @@ public class Bloco {
 		this.fim = fim;
 	}
 
-	public List<Atividade> getAtividade() {
+	public Instant getInicio() {
+		return inicio;
+	}
+
+	public Set<Atividade> getAtividade() {
 		return atividade;
 	}
 
