@@ -9,7 +9,6 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
@@ -25,17 +24,14 @@ public class Atividade {
 	private String descricao;
 	private Double preco;
 
-	@ManyToMany
-	@JoinTable(name = "bloco_atividade", joinColumns = @JoinColumn(name = "atividade_id"), inverseJoinColumns = @JoinColumn(name = "bloco_id"))
+	@ManyToMany(mappedBy = "atividade")	
 	private Set<Bloco> bloco = new HashSet<>();
 
 	@ManyToOne
 	@JoinColumn(name = "categoria_id")
 	private Categoria categoria;
 
-	@ManyToMany
-	@JoinTable(name = "participante_atividade", joinColumns = @JoinColumn(name = "atividade_id"),
-		inverseJoinColumns = @JoinColumn(name = "participante_id"))
+	@ManyToMany(mappedBy = "atividade")
 	private Set<Participante> participante = new HashSet<>();
 
 	

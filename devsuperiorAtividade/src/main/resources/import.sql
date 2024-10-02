@@ -20,15 +20,15 @@ INSERT INTO TB_ATIVIDADE (nome, descricao, preco,categoria_id)VALUES ('Atividade
 INSERT INTO TB_ATIVIDADE (nome, descricao, preco,categoria_id)VALUES ('Atividade 4', 'Descrição da atividade 4', 125.00,4);
 
 
-INSERT INTO BLOCO_ATIVIDADE   (atividade_id, bloco_id)VALUES (1,1);
+INSERT INTO BLOCO_ATIVIDADE   (atividade_id, bloco_id)VALUES (1,2);
 INSERT INTO BLOCO_ATIVIDADE   (atividade_id, bloco_id)VALUES (2,2);
-INSERT INTO BLOCO_ATIVIDADE   (atividade_id, bloco_id)VALUES (3,3);
-INSERT INTO BLOCO_ATIVIDADE   (atividade_id, bloco_id)VALUES (4,4);
+INSERT INTO BLOCO_ATIVIDADE   (atividade_id, bloco_id)VALUES (3,1);
+INSERT INTO BLOCO_ATIVIDADE   (atividade_id, bloco_id)VALUES (4,1);
 
-INSERT INTO PARTICIPANTE_ATIVIDADE   (atividade_id, participante_id)VALUES (1,1);
-INSERT INTO PARTICIPANTE_ATIVIDADE   (atividade_id, participante_id)VALUES (2,2);
-INSERT INTO PARTICIPANTE_ATIVIDADE   (atividade_id, participante_id)VALUES (3,3);
-INSERT INTO PARTICIPANTE_ATIVIDADE   (atividade_id, participante_id)VALUES (4,4);
+INSERT INTO PARTICIPANTE_ATIVIDADE   (participante_id,atividade_id)VALUES (1,1);
+INSERT INTO PARTICIPANTE_ATIVIDADE   (participante_id,atividade_id)VALUES (1,2);
+INSERT INTO PARTICIPANTE_ATIVIDADE   (participante_id,atividade_id)VALUES (3,1);
+INSERT INTO PARTICIPANTE_ATIVIDADE   (participante_id,atividade_id)VALUES (4,1);
 
 
 

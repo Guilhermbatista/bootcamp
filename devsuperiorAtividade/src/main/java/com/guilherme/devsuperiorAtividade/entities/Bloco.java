@@ -10,6 +10,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 
@@ -25,7 +27,10 @@ public class Bloco {
 	@Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
 	private Instant fim;
 
-	@ManyToMany(mappedBy = "bloco")
+	@ManyToMany
+	@JoinTable(name = "bloco_atividade", joinColumns = @JoinColumn(name = "bloco_id"),
+	inverseJoinColumns = @JoinColumn(name = "atividade_id"))
+
 	private Set<Atividade> atividade = new HashSet<>();
 
 	public Bloco() {
