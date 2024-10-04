@@ -8,8 +8,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 
@@ -22,11 +20,8 @@ public class Participante {
 	private Integer id;
 	private String nome;
 	private String email;
-	
-	
-	@ManyToMany
-	@JoinTable(name = "participante_atividade", joinColumns = @JoinColumn(name = "participante_id"),
-		inverseJoinColumns = @JoinColumn(name = "atividade_id"))
+
+	@ManyToMany(mappedBy = "participante")
 	private Set<Atividade> atividade = new HashSet<>();
 
 	public Participante() {
